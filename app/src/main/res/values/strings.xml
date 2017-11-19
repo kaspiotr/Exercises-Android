@@ -2,4 +2,5 @@
     <string name="app_name">First</string>
     <string name="button_open_other_activity">open other activity</string>
     <string name="button_back">back</string>
+    <string name="msg_closing_activity">Activity is being closed</string>
 </resources>
