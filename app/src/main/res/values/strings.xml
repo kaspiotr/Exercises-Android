@@ -3,4 +3,9 @@
     <string name="button_open_other_activity">open other activity</string>
     <string name="button_back">back</string>
     <string name="msg_closing_activity">Activity is being closed</string>
+    <string name="text_title_phone">PHONE</string>
+    <string name="text_mobile">MOBILE</string>
+    <string name="text_title_email">EMAIL</string>
+    <string name="text_home">HOME</string>
+    <string name="text_title_website">WEBSITE</string>
 </resources>
