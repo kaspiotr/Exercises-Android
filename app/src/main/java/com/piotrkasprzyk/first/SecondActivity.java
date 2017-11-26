@@ -23,9 +23,9 @@ public class SecondActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onPause() {
+    protected void onDestroy() {
         displayToast();
-        super.onPause();
+        super.onDestroy();
     }
 
     private void displayToast() {
