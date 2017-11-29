@@ -2,6 +2,7 @@ package com.piotrkasprzyk.first;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.piotrkasprzyk.first.pojo.Contact;
+import com.piotrkasprzyk.first.utils.ContactUtils;
 import com.squareup.picasso.Picasso;
 
 public class SecondActivity extends AppCompatActivity {
@@ -38,12 +40,7 @@ public class SecondActivity extends AppCompatActivity {
     }
 
     private void loadContactData(ActionBar actionBar) {
-        Contact defaultContact = new Contact();
-
-        defaultContact.setName("Jessica Alba");
-        defaultContact.setPhoneNumber("25369852447863");
-        defaultContact.setEmail("jessica@alba.com");
-        defaultContact.setWebsite("http://jessicaalba.com");
+        Contact defaultContact = ContactUtils.createContact();
 
         if (actionBar != null) {
             actionBar.setTitle(defaultContact.getName());
@@ -59,6 +56,8 @@ public class SecondActivity extends AppCompatActivity {
                 .centerCrop()
                 .into((ImageView) findViewById(R.id.image_contact));
     }
+
+
 
     private void displayToast() {
         Context context = getApplicationContext();
