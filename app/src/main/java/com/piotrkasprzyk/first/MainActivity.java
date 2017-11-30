@@ -7,9 +7,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.piotrkasprzyk.first.pojo.Contact;
 import com.piotrkasprzyk.first.utils.ContactUtils;
 
 import java.util.Collections;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView contactRecyclerView;
@@ -31,8 +33,10 @@ public class MainActivity extends AppCompatActivity {
         mLayoutManager = new LinearLayoutManager(this);
         contactRecyclerView.setLayoutManager(mLayoutManager);
 
+        List<Contact> listOfContacts =  ContactUtils.createContactList(10);
+
         // specify an adapter (see also next example)
-        mAdapter = new MyAdapter(Collections.singletonList(ContactUtils.createContact()));
+        mAdapter = new MyAdapter(listOfContacts);
         contactRecyclerView.setAdapter(mAdapter);
 
 
