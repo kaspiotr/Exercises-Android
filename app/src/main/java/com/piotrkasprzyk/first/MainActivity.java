@@ -13,10 +13,12 @@ import com.piotrkasprzyk.first.utils.ContactUtils;
 import java.util.Collections;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
     private RecyclerView contactRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+
+    public static String KEY_INTENT_CONTACT = "KEY_CONTACT";
 
 
     @Override
@@ -36,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         List<Contact> listOfContacts =  ContactUtils.createContactList(10);
 
         // specify an adapter (see also next example)
-        mAdapter = new MyAdapter(listOfContacts);
+        mAdapter = new MyAdapter(listOfContacts, this);
         contactRecyclerView.setAdapter(mAdapter);
 
 

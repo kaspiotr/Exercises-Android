@@ -1,6 +1,7 @@
 package com.piotrkasprzyk.first;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
@@ -27,8 +28,9 @@ public class SecondActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        loadContactData(actionBar);
-
+        Intent intent = getIntent();
+        Contact contact = intent.getParcelableExtra(MainActivity.KEY_INTENT_CONTACT);
+        loadContactData(actionBar, contact);
     }
 
     @Override
@@ -37,16 +39,15 @@ public class SecondActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
-    private void loadContactData(ActionBar actionBar) {
-        Contact defaultContact = ContactUtils.createContact();
+    private void loadContactData(ActionBar actionBar, Contact contact) {
 
         if (actionBar != null) {
-            actionBar.setTitle(defaultContact.getName());
+            actionBar.setTitle(contact.getName());
         }
 
-        ((TextView) findViewById(R.id.text_number)).setText(defaultContact.getPhoneNumber());
-        ((TextView) findViewById(R.id.text_email)).setText(defaultContact.getEmail());
-        ((TextView) findViewById(R.id.text_website)).setText(defaultContact.getWebsite());
+        ((TextView) findViewById(R.id.text_number)).setText(contact.getPhoneNumber());
+        ((TextView) findViewById(R.id.text_email)).setText(contact.getEmail());
+        ((TextView) findViewById(R.id.text_website)).setText(contact.getWebsite());
 
         Picasso.with(this)
                 .load("https://i.imgur.com/EWank4D.jpg") //original: 450X281
