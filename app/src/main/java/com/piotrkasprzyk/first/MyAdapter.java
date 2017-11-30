@@ -4,9 +4,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.piotrkasprzyk.first.pojo.Contact;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -19,18 +21,22 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
         public View mView;
+        private ImageView contactImage;
+        private TextView contactName;
         private TextView email;
         public ViewHolder(View v) {
             super(v);
             mView = v;
+
+            contactImage = v.findViewById(R.id.image_contact);
+            contactName = v.findViewById(R.id.text_contact_name);
             email = v.findViewById(R.id.text_email);
         }
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
     public MyAdapter(List<Contact> contacts) {
-
-       this.contacts = contacts;
+        this.contacts = contacts;
     }
 
     // Create new views (invoked by the layout manager)
@@ -49,7 +55,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
+
+        holder.contactName.setText(contacts.get(position).getName());
         holder.email.setText(contacts.get(position).getEmail());
+        Picasso.with(holder.contactImage.getContext())
+                .load("https://i.imgur.com/EWank4D.jpg") //original: 450X281
+                .resize(450,280)
+                .centerCrop()
+                .into(holder.contactImage);
 
     }
 

@@ -14,6 +14,7 @@ public class ContactUtils {
         defaultContact.setPhoneNumber("25369852447863");
         defaultContact.setEmail("jessica@alba.com");
         defaultContact.setWebsite("http://jessicaalba.com");
+        defaultContact.setProfilePictureURL("https://i.imgur.com/EWank4D.jpg");
         return defaultContact;
     }
 
