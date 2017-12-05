@@ -31,6 +31,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         private ImageView contactImage;
         private TextView contactName;
         private TextView email;
+
         public ViewHolder(View v) {
             super(v);
             mView = v;
@@ -76,7 +77,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         holder.email.setText(contacts.get(position).getEmail());
         Picasso.with(holder.contactImage.getContext())
                 .load("https://i.imgur.com/EWank4D.jpg") //original: 450X281
-                .resize(450,280)
+                .resize(450, 280)
                 .centerCrop()
                 .into(holder.contactImage);
 

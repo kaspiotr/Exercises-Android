@@ -7,12 +7,6 @@
     tools:context="com.piotrkasprzyk.first.MainActivity"
     android:orientation="vertical">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="openSecondActivity"
-        android:text="@string/button_open_other_activity" />
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/contact_recycler_view"
         android:scrollbars="vertical"
