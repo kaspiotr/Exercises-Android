@@ -12,7 +12,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.piotrkasprzyk.first.pojo.Contact;
-import com.piotrkasprzyk.first.utils.ContactUtils;
 import com.squareup.picasso.Picasso;
 
 public class SecondActivity extends AppCompatActivity {

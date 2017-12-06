@@ -6,10 +6,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.piotrkasprzyk.first.pojo.Contact;
 import com.squareup.picasso.Picasso;
@@ -25,7 +24,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
         // each data item is just a string in this case
         public View mView;
         private ImageView contactImage;
@@ -47,6 +46,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             intent.putExtra(KEY_INTENT_CONTACT, contacts.get(getAdapterPosition()));
             v.getContext().startActivity(intent);
         }
+
+
+        @Override
+        public boolean onLongClick(View v) {
+            displayToast(v, getAdapterPosition());
+            return true;
+        }
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
@@ -64,6 +70,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         // set the view's size, margins, paddings and layout parameters...
         ViewHolder vh = new ViewHolder(v);
         v.setOnClickListener(vh);
+        v.setOnLongClickListener(vh);
         return vh;
     }
 
@@ -86,6 +93,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
+
         return contacts.size();
+    }
+
+    private void displayToast(View view, int position) {
+        Context context = view.getContext();
+        CharSequence text = "On long pressed test " + position;
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
     }
 }

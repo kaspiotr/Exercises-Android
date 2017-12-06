@@ -12,7 +12,7 @@ import com.piotrkasprzyk.first.utils.ContactUtils;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
     private RecyclerView contactRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity{
         mLayoutManager = new LinearLayoutManager(this);
         contactRecyclerView.setLayoutManager(mLayoutManager);
 
-        List<Contact> listOfContacts =  ContactUtils.createContactList(10);
+        List<Contact> listOfContacts = ContactUtils.createContactList(10);
 
         // specify an adapter (see also next example)
         mAdapter = new MyAdapter(listOfContacts, this);
