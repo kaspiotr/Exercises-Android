@@ -50,7 +50,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
         @Override
         public boolean onLongClick(View v) {
-            displayToast(v, getAdapterPosition());
+//            displayToast(v, getAdapterPosition());
+            removeItem(getAdapterPosition());
+
             return true;
         }
     }
@@ -65,7 +67,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     @Override
     public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
-        View v = (View) LayoutInflater.from(parent.getContext())
+        View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.contact_layot, parent, false);
         // set the view's size, margins, paddings and layout parameters...
         ViewHolder vh = new ViewHolder(v);
@@ -97,12 +99,20 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         return contacts.size();
     }
 
-    private void displayToast(View view, int position) {
-        Context context = view.getContext();
-        CharSequence text = "On long pressed test " + position;
-        int duration = Toast.LENGTH_SHORT;
+//    private void displayToast(View view, int position) {
+//        Context context = view.getContext();
+//        CharSequence text = "On long pressed test " + position;
+//        int duration = Toast.LENGTH_SHORT;
+//
+//        Toast toast = Toast.makeText(context, text, duration);
+//        toast.show();
+//    }
 
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
+    private void removeItem(int position){
+        contacts.remove(position);
+        notifyItemRemoved(position);
+        notifyItemRangeChanged(position, contacts.size());
     }
 }
+
+
