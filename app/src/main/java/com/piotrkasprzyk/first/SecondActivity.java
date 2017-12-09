@@ -14,11 +14,20 @@ import android.widget.Toast;
 import com.piotrkasprzyk.first.pojo.Contact;
 import com.squareup.picasso.Picasso;
 
-public class SecondActivity extends AppCompatActivity {
+public class SecondActivity extends AppCompatActivity implements Contract.View {
+
+    private Contract.Presenter secondPresenter = new PresenterImpl(RepositoryImpl.getInstance());
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.second_activity);
+
+        initUI();
+        initPresenter();
+    }
+
+    private void initUI() {
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
 
@@ -30,6 +39,11 @@ public class SecondActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Contact contact = intent.getParcelableExtra(MainActivity.KEY_INTENT_CONTACT);
         loadContactData(actionBar, contact);
+    }
+
+    private void initPresenter() {
+        secondPresenter.attachView(this);
+        secondPresenter.loadData();
     }
 
     @Override

@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.piotrkasprzyk.first.pojo.Contact;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.piotrkasprzyk.first.MainActivity.KEY_INTENT_CONTACT;
@@ -20,6 +21,18 @@ import static com.piotrkasprzyk.first.MainActivity.KEY_INTENT_CONTACT;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     protected List<Contact> contacts;
     private final Context context;
+
+    // Provide a suitable constructor (depends on the kind of dataset)
+    public MyAdapter(Context context) {
+        this.contacts = new ArrayList<>();
+        this.context = context;
+    }
+
+    public void updateList(List<Contact> contacts) {
+        this.contacts.removeAll(contacts); //to avoid duplicates
+        this.contacts.addAll(contacts);
+        notifyDataSetChanged();
+    }
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -29,6 +42,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         public View mView;
         private ImageView contactImage;
         private TextView contactName;
+
         private TextView email;
 
         public ViewHolder(View v) {
@@ -40,14 +54,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             email = v.findViewById(R.id.text_email);
         }
 
+
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(v.getContext(), SecondActivity.class);
             intent.putExtra(KEY_INTENT_CONTACT, contacts.get(getAdapterPosition()));
             v.getContext().startActivity(intent);
         }
-
-
         @Override
         public boolean onLongClick(View v) {
 //            displayToast(v, getAdapterPosition());
@@ -55,12 +68,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
             return true;
         }
-    }
 
-    // Provide a suitable constructor (depends on the kind of dataset)
-    public MyAdapter(List<Contact> contacts, Context context) {
-        this.contacts = contacts;
-        this.context = context;
     }
 
     // Create new views (invoked by the layout manager)
