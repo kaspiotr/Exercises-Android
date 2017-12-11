@@ -13,7 +13,7 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         <activity
-            android:name=".MainActivity"
+            android:name=".view.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,8 +22,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SecondActivity"
-            android:parentActivityName="com.piotrkasprzyk.first.SecondActivity" />
+            android:name=".view.SecondActivity"
+            android:parentActivityName="com.piotrkasprzyk.first.view.SecondActivity" />
     </application>
 
 </manifest>
