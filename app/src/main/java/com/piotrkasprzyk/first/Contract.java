@@ -11,7 +11,6 @@ public interface Contract {
 
     interface ContactsListView extends View {
         void setContacts(List<Contact> contacts);
-        void openSecondView(int contactId);
     }
 
     interface ContactView extends View {

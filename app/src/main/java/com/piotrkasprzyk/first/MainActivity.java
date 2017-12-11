@@ -26,11 +26,6 @@ public class MainActivity extends AppCompatActivity implements Contract.Contacts
     }
 
     @Override
-    public void openSecondView(int contactId) {
-
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
