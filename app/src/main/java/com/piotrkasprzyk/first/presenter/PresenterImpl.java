@@ -1,7 +1,10 @@
-package com.piotrkasprzyk.first;
+package com.piotrkasprzyk.first.presenter;
 
 
 import android.support.annotation.Nullable;
+
+import com.piotrkasprzyk.first.Contract;
+import com.piotrkasprzyk.first.repository.Repository;
 
 public class PresenterImpl implements Contract.Presenter {
 
@@ -10,7 +13,7 @@ public class PresenterImpl implements Contract.Presenter {
     @Nullable
     private Contract.View view;
 
-    PresenterImpl(Repository repository){
+    PresenterImpl(Repository repository) {
         this.repository = repository;
     }
 
@@ -24,15 +27,19 @@ public class PresenterImpl implements Contract.Presenter {
         this.view = null;
     }
 
-    protected Contract.View getView(){
-        return view;
-    }
-
     public void setView(@Nullable Contract.View view) {
         this.view = view;
     }
 
-    public void loadData(){
+    public void loadData() {
 
+    }
+
+    protected Contract.View getView() {
+        return view;
+    }
+
+    protected Repository getRepository() {
+        return repository;
     }
 }

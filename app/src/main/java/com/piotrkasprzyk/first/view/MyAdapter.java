@@ -1,4 +1,4 @@
-package com.piotrkasprzyk.first;
+package com.piotrkasprzyk.first.view;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,13 +9,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.piotrkasprzyk.first.R;
 import com.piotrkasprzyk.first.pojo.Contact;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.piotrkasprzyk.first.MainActivity.KEY_INTENT_CONTACT;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     protected List<Contact> contacts;
@@ -57,7 +56,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(v.getContext(), SecondActivity.class);
-            intent.putExtra(KEY_INTENT_CONTACT, contacts.get(getAdapterPosition()));
+            intent.putExtra(MainActivity.KEY_INTENT_CONTACT, contacts.get(getAdapterPosition()));
             v.getContext().startActivity(intent);
         }
         @Override

@@ -1,4 +1,4 @@
-package com.piotrkasprzyk.first;
+package com.piotrkasprzyk.first.repository;
 
 public class RepositoryImpl implements Repository{
 

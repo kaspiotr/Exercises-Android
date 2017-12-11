@@ -1,17 +1,21 @@
-package com.piotrkasprzyk.first;
+package com.piotrkasprzyk.first.view;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.piotrkasprzyk.first.Contract;
+import com.piotrkasprzyk.first.R;
 import com.piotrkasprzyk.first.pojo.Contact;
+import com.piotrkasprzyk.first.presenter.ContactsListPresenterImpl;
+import com.piotrkasprzyk.first.repository.DummyContactsRepositoryImpl;
 
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements Contract.ContactsListView {
 
-    private Contract.ContactsListPresenter presenter = new ContactsListPresenterImpl(RepositoryImpl.getInstance());
+    private Contract.ContactsListPresenter presenter = new ContactsListPresenterImpl(DummyContactsRepositoryImpl.getInstance());
 
     private RecyclerView contactRecyclerView;
     private MyAdapter mAdapter;

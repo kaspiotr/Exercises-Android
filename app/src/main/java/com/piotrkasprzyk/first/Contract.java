@@ -14,7 +14,7 @@ public interface Contract {
     }
 
     interface ContactView extends View {
-
+        void setContact(Contact contact);
     }
 
     interface Presenter {
@@ -26,6 +26,10 @@ public interface Contract {
     }
 
     interface ContactsListPresenter extends Presenter {
+
+    }
+
+    interface ContactPresenter extends Presenter {
 
     }
 }
