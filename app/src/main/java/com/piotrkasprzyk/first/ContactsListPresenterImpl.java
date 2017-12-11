@@ -5,8 +5,8 @@ import com.piotrkasprzyk.first.utils.ContactUtils;
 
 import java.util.List;
 
-class ContactPresenterImpl extends PresenterImpl implements Contract.ContactPresenter {
-    public ContactPresenterImpl(RepositoryImpl instance) {
+class ContactsListPresenterImpl extends PresenterImpl implements Contract.ContactsListPresenter {
+    public ContactsListPresenterImpl(RepositoryImpl instance) {
         super(instance);
     }
 
@@ -18,6 +18,6 @@ class ContactPresenterImpl extends PresenterImpl implements Contract.ContactPres
     @Override
     public void loadData() {
         List<Contact> contacts = ContactUtils.createContactList(10);
-        ((Contract.ContactView) getView()).setContacts(contacts);
+        ((Contract.ContactsListView) getView()).setContacts(contacts);
     }
 }

@@ -9,8 +9,13 @@ public interface Contract {
 
     }
 
-    interface ContactView extends View {
+    interface ContactsListView extends View {
         void setContacts(List<Contact> contacts);
+        void openSecondView(int contactId);
+    }
+
+    interface ContactView extends View {
+
     }
 
     interface Presenter {
@@ -21,7 +26,7 @@ public interface Contract {
         void loadData();
     }
 
-    interface ContactPresenter extends Presenter {
+    interface ContactsListPresenter extends Presenter {
 
     }
 }

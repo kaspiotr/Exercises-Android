@@ -3,11 +3,6 @@ package com.piotrkasprzyk.first;
 
 import android.support.annotation.Nullable;
 
-import com.piotrkasprzyk.first.pojo.Contact;
-import com.piotrkasprzyk.first.utils.ContactUtils;
-
-import java.util.List;
-
 public class PresenterImpl implements Contract.Presenter {
 
     private Repository repository;

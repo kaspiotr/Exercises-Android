@@ -9,9 +9,9 @@ import com.piotrkasprzyk.first.pojo.Contact;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements Contract.ContactView {
+public class MainActivity extends AppCompatActivity implements Contract.ContactsListView {
 
-    private Contract.ContactPresenter presenter = new ContactPresenterImpl(RepositoryImpl.getInstance());
+    private Contract.ContactsListPresenter presenter = new ContactsListPresenterImpl(RepositoryImpl.getInstance());
 
     private RecyclerView contactRecyclerView;
     private MyAdapter mAdapter;
@@ -26,16 +26,21 @@ public class MainActivity extends AppCompatActivity implements Contract.ContactV
     }
 
     @Override
+    public void openSecondView(int contactId) {
+
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        initUI();
+        initUi();
         initPresenter();
 
     }
 
-    private void initUI() {
+    private void initUi() {
         contactRecyclerView = findViewById(R.id.contact_recycler_view);
 
         // use this setting to improve performance if you know that changes

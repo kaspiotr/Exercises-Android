@@ -28,8 +28,8 @@ public class ContactUtils {
         String names[] = {"Jan", "Piotr", "Maria", "Jessica", "Kacper", "Anna"};
         String surnames[] = {"Nowak", "Kowal", "Carter", "Alba", "Eastwood", "Muller"};
         String numbers[] = {"11122233344455", "22233344455566", "33344455566677", "25369852447863", "25369852447863"};
-        String emails[] = { "nowak@gmil.com", "eastwood@eastwood.com", "muller@muller.com", "jessica@alba.com", "piotr@gmail.com", "anna@interia.com"};
-        String websites[] = {"http://muller.com", "https://clinteastwood.com","http://jessicaalba.com", "http://kowal.com", "http://anna.com", "http://carter.com"};
+        String emails[] = { "nowak@gmail.com", "eastwood@eastwood.com", "muller@muller.com", "jessica@alba.com", "piotr@gmail.com", "anna@interia.com"};
+        String websites[] = {"http://mullerswebsite.com", "https://clinteastwood.com","http://jessicaalba.com", "http://kowalwebsite.com", "http://annaswebsite.com", "http://carterswebsite.com"};
 
         for(int i=0; i<noOfElements; i++){
 
