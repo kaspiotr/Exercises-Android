@@ -12,7 +12,5 @@ public class ContactPresenterImpl extends PresenterImpl implements Contract.Cont
     @Override
     public void loadData() {
         super.loadData();
-
-        ((Contract.ContactView) getView()).setContact(((ContactsRepository) getRepository()).getContactById(2));
     }
 }
