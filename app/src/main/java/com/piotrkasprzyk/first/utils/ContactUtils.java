@@ -14,11 +14,11 @@ public class ContactUtils {
     public static Contact createContact() {
         Contact defaultContact = new Contact();
 
-        defaultContact.setName("Jessica Alba");
-        defaultContact.setPhoneNumber("25369852447863");
+        defaultContact.setFirstName("Jessica Alba");
+        defaultContact.setPhone("25369852447863");
         defaultContact.setEmail("jessica@alba.com");
-        defaultContact.setWebsite("http://jessicaalba.com");
-        defaultContact.setProfilePictureURL("https://i.imgur.com/EWank4D.jpg");
+        //defaultContact.setWebsite("http://jessicaalba.com");
+        defaultContact.setAvatar("https://i.imgur.com/EWank4D.jpg");
         return defaultContact;
     }
 
@@ -34,11 +34,11 @@ public class ContactUtils {
         for(int i=0; i<noOfElements; i++){
 
             Contact someContact = new Contact();
-            someContact.setName(names[new Random().nextInt(names.length)] + " " + surnames[new Random().nextInt(surnames.length)]);
-            someContact.setPhoneNumber(numbers[new Random().nextInt(numbers.length)]);
+            someContact.setFirstName(names[new Random().nextInt(names.length)] + " " + surnames[new Random().nextInt(surnames.length)]);
+            someContact.setPhone(numbers[new Random().nextInt(numbers.length)]);
             someContact.setEmail(emails[new Random().nextInt(emails.length)]);
-            someContact.setWebsite(websites[new Random().nextInt(websites.length)]);
-            someContact.setProfilePictureURL("https://i.imgur.com/EWank4D.jpg");
+            //someContact.setWebsite(websites[new Random().nextInt(websites.length)]);
+            someContact.setAvatar("https://i.imgur.com/EWank4D.jpg");
 
             myContactList.add(i,someContact);
         }

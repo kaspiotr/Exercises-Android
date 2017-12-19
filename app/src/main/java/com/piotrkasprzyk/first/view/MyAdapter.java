@@ -87,11 +87,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
+        Contact contact = contacts.get(position);
 
-        holder.contactName.setText(contacts.get(position).getName());
-        holder.email.setText(contacts.get(position).getEmail());
+        holder.contactName.setText(contact.getFirstName() + " " + contact.getLastName());
+        holder.email.setText(contact.getEmail());
         Picasso.with(holder.contactImage.getContext())
-                .load("https://i.imgur.com/EWank4D.jpg") //original: 450X281
+                .load(contact.getAvatar()) //original: 450X281
                 .resize(450, 280)
                 .centerCrop()
                 .into(holder.contactImage);

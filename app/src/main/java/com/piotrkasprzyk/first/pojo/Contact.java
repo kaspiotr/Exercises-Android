@@ -4,22 +4,23 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Contact implements Parcelable {
-    private String name;
-    private String phoneNumber;
+    private String id;
+    private String firstName;
+    private String lastName;
     private String email;
-    private String website;
-    private String profilePictureURL;
+    private String phone;
+    private String avatar;
 
     public Contact() {
-
     }
 
     protected Contact(Parcel in) {
-        name = in.readString();
-        phoneNumber = in.readString();
+        id = in.readString();
+        firstName = in.readString();
+        lastName = in.readString();
         email = in.readString();
-        website = in.readString();
-        profilePictureURL = in.readString();
+        phone = in.readString();
+        avatar = in.readString();
     }
 
     public static final Creator<Contact> CREATOR = new Creator<Contact>() {
@@ -34,44 +35,52 @@ public class Contact implements Parcelable {
         }
     };
 
-    public String getName() {
-        return name;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public String getWebsite() {
-        return website;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getProfilePictureURL() {
-        return profilePictureURL;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public void setWebsite(String website) {
-        this.website = website;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public void setProfilePictureURL(String profilePictureURL) {
-        this.profilePictureURL = profilePictureURL;
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public String getAvatar() {
+        return avatar;
     }
 
     @Override
@@ -81,10 +90,11 @@ public class Contact implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(name);
-        dest.writeString(phoneNumber);
+        dest.writeString(id);
+        dest.writeString(firstName);
+        dest.writeString(lastName);
         dest.writeString(email);
-        dest.writeString(website);
-        dest.writeString(profilePictureURL);
+        dest.writeString(phone);
+        dest.writeString(avatar);
     }
 }

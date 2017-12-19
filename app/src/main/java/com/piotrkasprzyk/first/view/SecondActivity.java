@@ -28,18 +28,18 @@ public class SecondActivity extends AppCompatActivity implements Contract.Contac
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setTitle(contact.getName());
+            actionBar.setTitle(contact.getFirstName() + " " + contact.getLastName());
         }
 
         Picasso.with(this)
-                .load("https://i.imgur.com/EWank4D.jpg") //original: 450X281
+                .load(contact.getAvatar()) //original: 450X281
                 .resize(450, 280)
                 .centerCrop()
                 .into((ImageView) findViewById(R.id.image_contact));
 
-        ((TextView) findViewById(R.id.text_number)).setText(contact.getPhoneNumber());
+        ((TextView) findViewById(R.id.text_number)).setText(contact.getPhone());
         ((TextView) findViewById(R.id.text_email)).setText(contact.getEmail());
-        ((TextView) findViewById(R.id.text_website)).setText(contact.getWebsite());
+        ((TextView) findViewById(R.id.text_website)).setText(contact.getEmail());
     }
 
     @Override

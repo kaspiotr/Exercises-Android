@@ -1,0 +1,82 @@
+[
+  {
+    "id": "10c9d0d8-7399-41c3-a0e9-c4ab08ebe31d",
+    "firstName": "John",
+    "lastName": "Messershmidt",
+    "email": "john@internet.com",
+    "phone": "+48 699 944 729",
+    "avatar": "https://randomuser.me/api/portraits/men/-92.jpg"
+  },
+  {
+    "id": "de98ba4f-ff32-4c0f-982f-596000f673a2",
+    "firstName": "Jane",
+    "lastName": "Werberg",
+    "email": "werber@internet.com",
+    "phone": "+48 402 423 555",
+    "avatar": "https://randomuser.me/api/portraits/women/52.jpg"
+  },
+  {
+    "id": "de7c9cd3-09f1-494f-add0-9a06bb16b5b3",
+    "firstName": "Erwin",
+    "lastName": "Schrodinger",
+    "email": "erwin@internet.com",
+    "phone": "+48 222 333 444",
+    "avatar": "https://randomuser.me/api/portraits/men/-5.jpg"
+  },
+  {
+    "id": "60d32464-292d-419f-9403-c860ea0753a2",
+    "firstName": "Max",
+    "lastName": "Plank",
+    "email": "max@internet.com",
+    "phone": "+48 527 423 107",
+    "avatar": "https://randomuser.me/api/portraits/men/-1.jpg"
+  },
+  {
+    "id": "1c42a8f5-1861-40f4-9cdc-71127a3b162f",
+    "firstName": "Franz",
+    "lastName": "Ferdynand",
+    "email": "franz@internet.com",
+    "phone": "+48 434 253 037",
+    "avatar": "https://randomuser.me/api/portraits/men/-77.jpg"
+  },
+  {
+    "id": "6b2acfd2-6f20-44e1-bd7b-b70f907cdc3e",
+    "firstName": "Luna",
+    "lastName": "Lovegood",
+    "email": "luna@internet.com",
+    "phone": "+48 534 853 037",
+    "avatar": "https://randomuser.me/api/portraits/women/92.jpg"
+  },
+  {
+    "id": "5f236200-0422-4d83-914f-ab694086e48a",
+    "firstName": "Eva",
+    "lastName": "March",
+    "email": "eva@internet.com",
+    "phone": "+48 534 253 037",
+    "avatar": "https://randomuser.me/api/portraits/women/-95.jpg"
+  },
+  {
+    "id": "7f311d31-1467-407a-bf53-422e402407c3",
+    "firstName": "Roman",
+    "lastName": "Pietrovsky",
+    "email": "roman@internet.com",
+    "phone": "+48 524 253 037",
+    "avatar": "https://randomuser.me/api/portraits/men/44.jpg"
+  },
+  {
+    "id": "cf502261-a177-4734-950c-3f41ddd50f0f",
+    "firstName": "Han",
+    "lastName": "Multiple",
+    "email": "han@internet.com",
+    "phone": "+48 594 253 037",
+    "avatar": "https://randomuser.me/api/portraits/men/80.jpg"
+  },
+  {
+    "id": "2ee17295-7121-4799-bb6a-f50bb3a545c6",
+    "firstName": "Tatiana",
+    "lastName": "Okrutnik",
+    "email": "okrutnik1@internet.com",
+    "phone": "+48 534 253 037",
+    "avatar": "https://randomuser.me/api/portraits/women/6.jpg"
+  }
+]

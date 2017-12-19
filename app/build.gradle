@@ -37,4 +37,18 @@ dependencies {
 
     // RecycleView
     compile 'com.android.support:recyclerview-v7:26.1.0'
+
+    // Retrofit
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+
+    // Gson
+    compile 'com.google.code.gson:gson:2.8.2'
+
+    //Square Lib, Consume Rest API
+    compile 'com.squareup.retrofit2:retrofit:2.2.0'
+    compile 'com.squareup.okhttp:okhttp:2.5.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.2.0'
+
+
+
 }
