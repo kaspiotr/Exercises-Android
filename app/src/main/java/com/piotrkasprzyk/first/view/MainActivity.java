@@ -4,11 +4,14 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.piotrkasprzyk.first.Contract;
 import com.piotrkasprzyk.first.R;
 import com.piotrkasprzyk.first.pojo.Contact;
 import com.piotrkasprzyk.first.presenter.ContactsListPresenterImpl;
+import com.piotrkasprzyk.first.presenter.ContactsLoadingAsyncTask;
 import com.piotrkasprzyk.first.repository.DummyContactsRepositoryImpl;
 import com.piotrkasprzyk.first.repository.RestContactsRepositoryImpl;
 import com.piotrkasprzyk.first.utils.ContactFetcherAssyncTask;
@@ -17,10 +20,11 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements Contract.ContactsListView {
 
-    private Contract.ContactsListPresenter presenter = new ContactsListPresenterImpl(new RestContactsRepositoryImpl());
+    private Contract.ContactsListPresenter presenter;
 
     private RecyclerView contactRecyclerView;
     private MyAdapter mAdapter;
+    private ProgressBar contactsBar;
     private RecyclerView.LayoutManager mLayoutManager;
 
     public static String KEY_INTENT_CONTACT = "KEY_CONTACT";
@@ -33,7 +37,6 @@ public class MainActivity extends AppCompatActivity implements Contract.Contacts
 
         initUi();
         initPresenter();
-
     }
 
     @Override
@@ -42,6 +45,10 @@ public class MainActivity extends AppCompatActivity implements Contract.Contacts
     }
 
     private void initUi() {
+
+        contactsBar = findViewById(R.id.indeterminate_bar);
+        //contactsBar.setVisibility(View.VISIBLE);
+
         contactRecyclerView = findViewById(R.id.contact_recycler_view);
 
         // use this setting to improve performance if you know that changes
@@ -55,9 +62,12 @@ public class MainActivity extends AppCompatActivity implements Contract.Contacts
         // specify an adapter (see also next example)
         mAdapter = new MyAdapter(this);
         contactRecyclerView.setAdapter(mAdapter);
+
+        //contactsBar.setVisibility(View.GONE);
     }
 
     private void initPresenter(){
+        presenter = new ContactsListPresenterImpl(new RestContactsRepositoryImpl(), contactsBar);
         presenter.attachView(this);
         presenter.loadData();
     }

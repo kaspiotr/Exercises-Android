@@ -1,16 +1,24 @@
 package com.piotrkasprzyk.first.presenter;
 
-import android.os.AsyncTask;
+import android.widget.ProgressBar;
 
 import com.piotrkasprzyk.first.Contract;
 import com.piotrkasprzyk.first.pojo.Contact;
 import com.piotrkasprzyk.first.repository.ContactsRepository;
+import com.piotrkasprzyk.first.repository.RestContactsRepositoryImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ContactsListPresenterImpl extends PresenterImpl implements Contract.ContactsListPresenter {
-    public ContactsListPresenterImpl(ContactsRepository instance) {
-        super(instance);
+    private ProgressBar progressBar;
+    private List<Contact> contactsList;
+
+
+    public ContactsListPresenterImpl(ContactsRepository repository, ProgressBar progressBar) {
+        super(repository);
+        this.progressBar = progressBar;
+        this.contactsList = new ArrayList<>();
     }
 
     @Override
@@ -20,18 +28,7 @@ public class ContactsListPresenterImpl extends PresenterImpl implements Contract
 
     @Override
     public void loadData() {
-        new AsyncTask<Void, Integer, List<Contact>>() {
-            @Override
-            protected void onPostExecute(List<Contact> contacts) {
-                ((Contract.ContactsListView) getView()).setContacts(contacts);
-            }
-
-            @Override
-            protected List<Contact> doInBackground(Void... voids) {
-                List<Contact> contacts = ((ContactsRepository) getRepository()).getContacts();
-                return contacts;
-
-            }
-        }.execute();
+        ContactsLoadingAsyncTask asyncTask = new ContactsLoadingAsyncTask((RestContactsRepositoryImpl) getRepository(), (Contract.ContactsListView) getView(), progressBar);
+        asyncTask.execute();
     }
 }
