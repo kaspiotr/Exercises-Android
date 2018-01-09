@@ -18,9 +18,18 @@ import com.piotrkasprzyk.first.presenter.ContactPresenterImpl;
 import com.piotrkasprzyk.first.repository.DummyContactsRepositoryImpl;
 import com.squareup.picasso.Picasso;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class SecondActivity extends AppCompatActivity implements Contract.ContactView {
 
     private Contract.Presenter secondPresenter = new ContactPresenterImpl(DummyContactsRepositoryImpl.getInstance());
+
+    @BindView(R.id.image_contact) ImageView contactImageView;
+    @BindView(R.id.text_number) TextView phoneTextView;
+    @BindView(R.id.text_email) TextView emailTextView;
+    @BindView(R.id.text_website) TextView websiteTextView;
+    @BindView(R.id.my_toolbar) Toolbar myToolbar;
 
     @Override
     public void setContact(Contact contact) {
@@ -32,20 +41,21 @@ public class SecondActivity extends AppCompatActivity implements Contract.Contac
         }
 
         Picasso.with(this)
-                .load(contact.getAvatar()) //original: 450X281
+                .load(contact.getAvatar())
                 .resize(450, 280)
                 .centerCrop()
-                .into((ImageView) findViewById(R.id.image_contact));
+                .into(contactImageView);
 
-        ((TextView) findViewById(R.id.text_number)).setText(contact.getPhone());
-        ((TextView) findViewById(R.id.text_email)).setText(contact.getEmail());
-        ((TextView) findViewById(R.id.text_website)).setText(contact.getEmail());
+        phoneTextView.setText(contact.getPhone());
+        emailTextView.setText(contact.getEmail());
+        websiteTextView.setText(contact.getEmail());
     }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.second_activity);
+        ButterKnife.bind(this);
 
         initUi();
         initPresenter();
@@ -58,7 +68,6 @@ public class SecondActivity extends AppCompatActivity implements Contract.Contac
     }
 
     private void initUi() {
-        Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
 
         Intent intent = getIntent();
