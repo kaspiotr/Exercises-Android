@@ -1,5 +1,6 @@
 package com.piotrkasprzyk.first.view;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -19,7 +20,11 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements Contract.ContactsListView {
 
+    private static final String SEEN_CONTACTS_PREF = "com.piotrkasprzyk.first.SEEN_CONTACTS_PREF";
+
     private Contract.ContactsListPresenter presenter;
+
+    private SharedPreferences seenContactsPref;
 
     @BindView(R.id.contact_recycler_view) RecyclerView contactRecyclerView;
     @BindView(R.id.indeterminate_bar) ProgressBar contactsBar;
@@ -46,6 +51,8 @@ public class MainActivity extends AppCompatActivity implements Contract.Contacts
     }
 
     private void initUi() {
+        seenContactsPref = getSharedPreferences(SEEN_CONTACTS_PREF, MODE_PRIVATE);
+
         contactRecyclerView.setHasFixedSize(true);
 
         mLayoutManager = new LinearLayoutManager(this);
@@ -60,4 +67,5 @@ public class MainActivity extends AppCompatActivity implements Contract.Contacts
         presenter.attachView(this);
         presenter.loadData();
     }
+
 }

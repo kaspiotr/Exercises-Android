@@ -10,8 +10,19 @@ public class Contact implements Parcelable {
     private String email;
     private String phone;
     private String avatar;
+    private boolean isSeen;
 
     public Contact() {
+    }
+
+    public Contact(String id, String firstName, String lastName, String email, String phone, String avatar, boolean isSeen) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phone = phone;
+        this.avatar = avatar;
+        this.isSeen = isSeen;
     }
 
     protected Contact(Parcel in) {
@@ -21,6 +32,7 @@ public class Contact implements Parcelable {
         email = in.readString();
         phone = in.readString();
         avatar = in.readString();
+        isSeen = in.readByte() != 0;
     }
 
     public static final Creator<Contact> CREATOR = new Creator<Contact>() {
@@ -59,6 +71,10 @@ public class Contact implements Parcelable {
         this.avatar = avatar;
     }
 
+    public void setSeen(boolean seen) {
+        isSeen = seen;
+    }
+
     public String getId() {
         return id;
     }
@@ -83,6 +99,10 @@ public class Contact implements Parcelable {
         return avatar;
     }
 
+    public boolean isSeen() {
+        return isSeen;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -95,6 +115,6 @@ public class Contact implements Parcelable {
         dest.writeString(lastName);
         dest.writeString(email);
         dest.writeString(phone);
-        dest.writeString(avatar);
+        dest.writeByte((byte) (isSeen ? 1 : 0));
     }
 }

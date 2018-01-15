@@ -16,6 +16,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindColor;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -24,7 +25,8 @@ import butterknife.OnLongClick;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     protected List<Contact> contacts;
 
-    private final Context context;
+    private Context context;
+
 
     public MyAdapter(Context context) {
         this.contacts = new ArrayList<>();
@@ -42,6 +44,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         @BindView(R.id.text_contact_name) TextView contactName;
         @BindView(R.id.text_email) TextView email;
 
+        @BindColor(R.color.unseenContactBackGround) int whiteColor;
+        @BindColor(R.color.seenContactBackground) int silverColor;
+
         public ViewHolder(View v) {
             super(v);
             ButterKnife.bind(this, v);
@@ -50,7 +55,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         @OnClick
         void onClick(View v) {
             Intent intent = new Intent(v.getContext(), SecondActivity.class);
-            intent.putExtra(MainActivity.KEY_INTENT_CONTACT, contacts.get(getAdapterPosition()));
+            Contact contact = contacts.get(getAdapterPosition());
+            notifyItemChanged(getAdapterPosition());
+            contact.setSeen(true);
+
+            intent.putExtra(MainActivity.KEY_INTENT_CONTACT, contact);
             v.getContext().startActivity(intent);
         }
 
@@ -74,6 +83,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Contact contact = contacts.get(position);
+
+        holder.itemView.setBackgroundColor(contact.isSeen() ? holder.silverColor : holder.whiteColor);
 
         holder.contactName.setText(contact.getFirstName() + " " + contact.getLastName());
         holder.email.setText(contact.getEmail());

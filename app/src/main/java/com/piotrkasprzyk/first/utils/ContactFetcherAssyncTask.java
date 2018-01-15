@@ -4,7 +4,6 @@ import android.os.AsyncTask;
 
 import com.piotrkasprzyk.first.Contract;
 import com.piotrkasprzyk.first.pojo.Contact;
-import com.piotrkasprzyk.first.repository.ContactsRepository;
 
 import java.util.List;
 

@@ -1,6 +1,5 @@
 package com.piotrkasprzyk.first.repository;
 
-import com.piotrkasprzyk.first.JsonDeserializer;
 import com.piotrkasprzyk.first.pojo.Contact;
 import com.piotrkasprzyk.first.utils.ContactUtils;
 
