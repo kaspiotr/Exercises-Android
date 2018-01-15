@@ -6,6 +6,4 @@ import java.util.List;
 
 public interface ContactsRepository extends Repository {
     List<Contact> getContacts();
-
-    Contact getContactById(int id);
 }

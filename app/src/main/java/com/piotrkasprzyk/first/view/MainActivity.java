@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.ProgressBar;
 
 import com.piotrkasprzyk.first.Contract;
@@ -50,6 +51,16 @@ public class MainActivity extends AppCompatActivity implements Contract.Contacts
         mAdapter.updateList(contacts);
     }
 
+    @Override
+    public void showProgress() {
+        contactsBar.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideProgress() {
+        contactsBar.setVisibility(View.GONE);
+    }
+
     private void initUi() {
         seenContactsPref = getSharedPreferences(SEEN_CONTACTS_PREF, MODE_PRIVATE);
 
@@ -58,12 +69,12 @@ public class MainActivity extends AppCompatActivity implements Contract.Contacts
         mLayoutManager = new LinearLayoutManager(this);
         contactRecyclerView.setLayoutManager(mLayoutManager);
 
-        mAdapter = new MyAdapter(this);
+        mAdapter = new MyAdapter();
         contactRecyclerView.setAdapter(mAdapter);
     }
 
     private void initPresenter() {
-        presenter = new ContactsListPresenterImpl(new RestContactsRepositoryImpl(), contactsBar);
+        presenter = new ContactsListPresenterImpl(new RestContactsRepositoryImpl());
         presenter.attachView(this);
         presenter.loadData();
     }

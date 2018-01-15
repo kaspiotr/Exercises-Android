@@ -11,6 +11,10 @@ public interface Contract {
 
     interface ContactsListView extends View {
         void setContacts(List<Contact> contacts);
+
+        void showProgress();
+
+        void hideProgress();
     }
 
     interface ContactView extends View {

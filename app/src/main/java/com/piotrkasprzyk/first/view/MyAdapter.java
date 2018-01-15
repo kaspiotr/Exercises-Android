@@ -25,12 +25,8 @@ import butterknife.OnLongClick;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     protected List<Contact> contacts;
 
-    private Context context;
-
-
-    public MyAdapter(Context context) {
+    public MyAdapter() {
         this.contacts = new ArrayList<>();
-        this.context = context;
     }
 
     public void updateList(List<Contact> contacts) {

@@ -20,8 +20,6 @@ public class RestContactsRepositoryImpl implements ContactsRepository {
                 .build();
 
         service = retrofit.create(ContactsService.class);
-
-
     }
 
     @Override
@@ -43,11 +41,4 @@ public class RestContactsRepositoryImpl implements ContactsRepository {
 
         return null;
     }
-
-    @Override
-    public Contact getContactById(int id) {
-        return null;
-    }
-
-
 }

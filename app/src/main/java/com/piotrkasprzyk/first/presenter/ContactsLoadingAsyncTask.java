@@ -1,8 +1,6 @@
 package com.piotrkasprzyk.first.presenter;
 
 import android.os.AsyncTask;
-import android.view.View;
-import android.widget.ProgressBar;
 
 import com.piotrkasprzyk.first.Contract;
 import com.piotrkasprzyk.first.pojo.Contact;
@@ -13,20 +11,18 @@ import java.util.List;
 public class ContactsLoadingAsyncTask extends AsyncTask<Void, Integer, List<Contact>> {
 
     private final Contract.ContactsListView view;
-    private ProgressBar contactsBar;
     private RestContactsRepositoryImpl repository;
 
-    public ContactsLoadingAsyncTask(RestContactsRepositoryImpl repository, Contract.ContactsListView view, ProgressBar contactsBar) {
+    public ContactsLoadingAsyncTask(RestContactsRepositoryImpl repository, Contract.ContactsListView view) {
         super();
         this.repository = repository;
-        this.contactsBar = contactsBar;
         this.view = view;
     }
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        contactsBar.setVisibility(View.VISIBLE);
+        view.showProgress();
     }
 
     @Override
@@ -36,7 +32,7 @@ public class ContactsLoadingAsyncTask extends AsyncTask<Void, Integer, List<Cont
 
     @Override
     protected void onPostExecute(List<Contact> contacts) {
-        contactsBar.setVisibility(View.GONE);
+        view.hideProgress();
         view.setContacts(contacts);
     }
 

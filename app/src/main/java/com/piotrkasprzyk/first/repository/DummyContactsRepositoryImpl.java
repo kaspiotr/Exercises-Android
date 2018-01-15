@@ -34,9 +34,4 @@ public class DummyContactsRepositoryImpl implements ContactsRepository {
     public List<Contact> getContacts() {
         return contacts;
     }
-
-    @Override
-    public Contact getContactById(int id) {
-        return contacts.get(id);
-    }
 }
