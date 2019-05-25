@@ -4,58 +4,59 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.ProgressBar;
 
 import com.piotrkasprzyk.first.Contract;
 import com.piotrkasprzyk.first.R;
 import com.piotrkasprzyk.first.pojo.Contact;
 import com.piotrkasprzyk.first.presenter.ContactsListPresenterImpl;
-import com.piotrkasprzyk.first.repository.DummyContactsRepositoryImpl;
+import com.piotrkasprzyk.first.repository.RestContactsRepositoryImpl;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity implements Contract.ContactsListView {
 
-    private Contract.ContactsListPresenter presenter = new ContactsListPresenterImpl(DummyContactsRepositoryImpl.getInstance());
+    private Contract.ContactsListPresenter presenter;
 
-    private RecyclerView contactRecyclerView;
+    @BindView(R.id.contact_recycler_view) RecyclerView contactRecyclerView;
+    @BindView(R.id.indeterminate_bar) ProgressBar contactsBar;
+
     private MyAdapter mAdapter;
+
     private RecyclerView.LayoutManager mLayoutManager;
 
     public static String KEY_INTENT_CONTACT = "KEY_CONTACT";
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
+
+        initUi();
+        initPresenter();
+    }
 
     @Override
     public void setContacts(List<Contact> contacts) {
         mAdapter.updateList(contacts);
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        initUi();
-        initPresenter();
-
-    }
-
     private void initUi() {
-        contactRecyclerView = findViewById(R.id.contact_recycler_view);
-
-        // use this setting to improve performance if you know that changes
-        // in content do not change the layout size of the RecyclerView
         contactRecyclerView.setHasFixedSize(true);
 
-        // use a linear layout manager
         mLayoutManager = new LinearLayoutManager(this);
         contactRecyclerView.setLayoutManager(mLayoutManager);
 
-        // specify an adapter (see also next example)
         mAdapter = new MyAdapter(this);
         contactRecyclerView.setAdapter(mAdapter);
     }
 
-    private void initPresenter(){
+    private void initPresenter() {
+        presenter = new ContactsListPresenterImpl(new RestContactsRepositoryImpl(), contactsBar);
         presenter.attachView(this);
         presenter.loadData();
     }

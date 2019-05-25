@@ -1,5 +1,6 @@
 package com.piotrkasprzyk.first.repository;
 
+import com.piotrkasprzyk.first.JsonDeserializer;
 import com.piotrkasprzyk.first.pojo.Contact;
 import com.piotrkasprzyk.first.utils.ContactUtils;
 
@@ -15,6 +16,7 @@ public class DummyContactsRepositoryImpl implements ContactsRepository {
     }
 
     public static DummyContactsRepositoryImpl getInstance() {
+
         if (instance == null) instance = new DummyContactsRepositoryImpl();
         return instance;
     }

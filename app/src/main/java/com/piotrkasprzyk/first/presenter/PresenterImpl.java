@@ -1,10 +1,14 @@
 package com.piotrkasprzyk.first.presenter;
 
 
+import android.os.AsyncTask;
 import android.support.annotation.Nullable;
 
 import com.piotrkasprzyk.first.Contract;
+import com.piotrkasprzyk.first.pojo.Contact;
 import com.piotrkasprzyk.first.repository.Repository;
+
+import java.util.List;
 
 public class PresenterImpl implements Contract.Presenter {
 
@@ -35,11 +39,12 @@ public class PresenterImpl implements Contract.Presenter {
 
     }
 
+    @Nullable
     protected Contract.View getView() {
         return view;
     }
 
-    protected Repository getRepository() {
+    public Repository getRepository() {
         return repository;
     }
 }
